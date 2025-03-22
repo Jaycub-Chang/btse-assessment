@@ -1,5 +1,5 @@
 import { SafeJSON } from "@/utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 interface ITradeHistoryApiItem {
   price: number;
@@ -52,7 +52,7 @@ const useLastPrice = () => {
     };
   }, []);
 
-  return { lastPriceInfo };
+  return useMemo(()=>({ lastPriceInfo }),[lastPriceInfo]);
 };
 
 export default useLastPrice;
